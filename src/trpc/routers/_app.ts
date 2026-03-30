@@ -1,10 +1,7 @@
 import { baseProcedure, createTRPCRouter } from '../init';
- 
+import { voicesRouter } from './voices';
 export const appRouter = createTRPCRouter({
-  health: baseProcedure.query(async () => {
-    // throw new Error("Something went wrong")
-    return { status: "ok", code: 123 }
-  })
+  voices: voicesRouter,
 });
  
 // export type definition of API
