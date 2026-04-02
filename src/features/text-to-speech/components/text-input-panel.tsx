@@ -7,6 +7,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { useTypedAppFormContext } from "@/hooks/use-app-form"
 import { ttsFormOptions } from "./text-to-speech-form"
 
+import { SettingsDrawer } from "./settings-drawer"
+import { HistoryDrawer } from "./history-drawer"
+import { VoiceSelectorButton } from "./voice-selector-button"
+
 import { GenerateButton } from "./generate-button"
 
 import { COST_PER_UNIT, TEXT_MAX_LENGTH } from "../data/constants"
@@ -36,7 +40,14 @@ export function TextInputPanel() {
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-linear-to-t from-background to-transparent" />
             </div>
             <div className="shrink-0 p-4 lg:p-6">
+                {/*Mobile Layout*/}
                 <div className="flex flex-col gap-3 lg:hidden">
+                    <div className="flex items-center gap-2">
+                        <SettingsDrawer>
+                            <VoiceSelectorButton />
+                        </SettingsDrawer>
+                        <HistoryDrawer />
+                    </div>
                     <GenerateButton
                         className="w-full"
                         disabled={isSubmitting || !isValid} 
